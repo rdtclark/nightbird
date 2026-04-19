@@ -4,7 +4,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [];
-  boot.kernelPackages = pkgs.linuxPackages_6_14;
+  boot.kernelPackages = pkgs.linuxPackages_6_13;
   powerManagement.cpuFreqGovernor = "powersave";
 
   networking.hostName = "nightbird";
