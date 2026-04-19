@@ -15,7 +15,7 @@ let
       type = "gpt";
       partitions.zfs = {
         size = "100%";
-        content = { type = "zfs"; pool = "tank"; };
+        content = { type = "zfs"; pool = "nest"; };
       };
     };
   };
@@ -29,7 +29,7 @@ in
       ssd3 = zfsDisk ssd3;
     };
 
-    zpool.tank = {
+    zpool.nest = {
       type = "zpool";
       # All 4 disks form a single RAIDZ1 vdev (1 parity disk, ~5.7 TB usable)
       mode = "raidz1";
