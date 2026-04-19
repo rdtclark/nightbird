@@ -2,7 +2,10 @@
 
 {
   boot.supportedFilesystems = [ "zfs" ];
-  boot.extraModprobeConfig = "options zfs zfs_arc_max=${toString (8 * 1024 * 1024 * 1024)}";
+  boot.extraModprobeConfig = ''
+    options zfs zfs_arc_max=${toString (8 * 1024 * 1024 * 1024)}
+    options igc eee_enable=0
+  '';
 
   services.zfs = {
     autoScrub = {

@@ -3,7 +3,7 @@
 {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelParams = [ "pcie_port_pm=off" "igc.eee_enable=0" ];
+  boot.kernelParams = [];
   boot.kernelPackages = pkgs.linuxPackages_6_12;
   powerManagement.cpuFreqGovernor = "powersave";
 
