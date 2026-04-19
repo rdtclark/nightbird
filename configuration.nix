@@ -1,0 +1,41 @@
+{ pkgs, ... }:
+
+{
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelParams = [ "pcie_port_pm=off" "igc.eee_enable=0" ];
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
+
+  networking.hostName = "nightbird";
+  networking.hostId = "aa3b1744";
+  networking.networkmanager.enable = true;
+
+  time.timeZone = "Europe/London";
+
+  i18n.defaultLocale = "en_GB.UTF-8";
+
+  console.keyMap = "uk";
+
+  users.users.robin = {
+    isNormalUser = true;
+    extraGroups = [ "networkmanager" "wheel" ];
+  };
+
+  nixpkgs.config.allowUnfree = true;
+
+  environment.systemPackages = with pkgs; [
+    vim
+    git
+    wget
+  ];
+
+  services.openssh = {
+    enable = true;
+    settings.PasswordAuthentication = false;
+    settings.PermitRootLogin = "no";
+  };
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  system.stateVersion = "25.11";
+}
