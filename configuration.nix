@@ -5,6 +5,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [ "pcie_port_pm=off" "igc.eee_enable=0" ];
   boot.kernelPackages = pkgs.linuxPackages_6_12;
+  powerManagement.cpuFreqGovernor = "powersave";
 
   networking.hostName = "nightbird";
   networking.hostId = "aa3b1744";
@@ -27,7 +28,10 @@
     vim
     git
     wget
+    powertop
   ];
+
+  powerManagement.powertop.enable = true;
 
   services.openssh = {
     enable = true;
