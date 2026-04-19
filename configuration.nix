@@ -3,8 +3,8 @@
 {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelParams = [];
-  boot.kernelPackages = pkgs.linuxPackages_6_13;
+  boot.kernelParams = [ "pcie_port_pm=off" ];
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
   powerManagement.cpuFreqGovernor = "powersave";
 
   networking.hostName = "nightbird";
